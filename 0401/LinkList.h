@@ -13,26 +13,28 @@ typedef struct LNode
 typedef LNode* LinkList; // 自定义LinkList单链表类型
 
 
-LinkList CreatList(int n);							  //创建线性表并初始化
-void ListInsert(LinkList& L, int n, ElemType e);	  //按位置增加元素
-void ListDelete(LinkList& L, int ID);			      //按值删除元素
-LinkList ListLocate(LinkList L, int ID);			  //按值查找元素
-void ListAlter(LinkList& L, int ID, ElemType e);		  //按位置修改元素
-void PrintList(LinkList L);							  //打印线性表
-void DestroyList(LinkList& L);						  //摧毁线性表
+LinkList CreatList(int n);							//创建线性表并初始化
+void ListInsert(LinkList& L, int n, ElemType e);	//按位置增加元素
+void ListDelete(LinkList& L, int ID);				//按值删除元素
+LinkList ListLocate(LinkList L, int ID);			//按值查找元素
+void ListAlter(LinkList& L, int ID, ElemType e);	//按值修改元素
+void PrintList(LinkList L);							//打印线性表
+void DestroyList(LinkList& L);						//摧毁线性表
 
 LinkList CreatList(int n)
 {
-	LinkList head, p;
-	head = new LNode;
-	head->next = NULL;
+	LinkList L, p, r;
+	L = new LNode;
+	L->next = NULL;		//初始化链表
+	p, r = L;
 	for (int i = 0; i < n; i++) {
-		InputPoint(head->data);
 		p = new LNode;
-		p->next = head;
-		head = p;
-	}
-	return head;
+		InputPoint(p->data);
+		r->next = p;
+		r = p;
+	}	//通过尾插法创建链表
+	r->next = NULL;
+	return L;	//返回链表L
 }
 
 void PrintList(LinkList L)
@@ -74,7 +76,7 @@ void ListDelete(LinkList& L, int ID)
 
 LinkList ListLocate(LinkList L, int ID)
 {
-	LinkList p = L->next;        //从第1个结点开始查找数据域为e的结点
+	LinkList p = L->next;        //从第1个结点开始查找数据为ID的结点
 	while (p && p->data.ID != ID)
 		p = p->next;
 	return p;        //找到后返回该结点指针，否则返回NULL
@@ -100,7 +102,7 @@ void ListInsert(LinkList& L, int n, ElemType e)
 
 void ListAlter(LinkList& L, int ID, ElemType e)
 {
-	LinkList p = L->next;        //从第1个结点开始查找数据域为e的结点
+	LinkList p = L->next;        //从第1个结点开始查找数据为ID的结点
 	while (p && p->data.ID != ID)
 		p = p->next;
 	p->data = e;
