@@ -9,14 +9,14 @@
 
 int main()
 {
-	LinkList pl;
-	int pos = 0;
-	ElemType e;
-	int ID = 0;
+	LinkList pl;			//链表
+	int pos = 0;			//链表中的位置
+	ElemType e;			//链表中的元素
+	int ID = 0;			//点坐标的ID
 	cout << "点的个数：";
-	int num;
+	int num;			//输入点的个数
 	cin >> num;
-	pl = CreatList(num);
+	pl = CreatList(num);		//使用尾插法创建链表并初始化
 	PrintList(pl);
 	int order = 1;
 	do {
@@ -24,27 +24,27 @@ int main()
 			"0：退出； 1：增加点； 2：删除点； 3：查找点； 4：修改点" << endl;
 		cin >> order;
 		switch (order) {
-		case 0:
+		case 0:		//退出程序
 			break;
-		case 1:
+		case 1:		//增加坐标操作
 			cout << "增加点的位置：" << endl;
 			cin >> pos;
 			InputPoint(e);
 			ListInsert(pl, pos, e);
 			PrintList(pl);
 			break;
-		case 2:
+		case 2:		//删除坐标操作
 			cout << "删除点的ID" << endl;
 			cin >> ID;
 			ListDelete(pl, ID);
 			PrintList(pl);
 			break;
-		case 3:
+		case 3:		//查找坐标操作
 			cout << "查找点的ID" << endl;
 			cin >> ID;
 			OutPoint(ListLocate(pl, ID)->data);
 			break;
-		case 4:
+		case 4:		//修改坐标操作
 			cout << "修改点的ID" << endl;
 			cin >> ID;
 			InputPoint(e);
