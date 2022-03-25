@@ -17,16 +17,18 @@ typedef struct Point
 
 void InputPoint(Point& P)
 {
-    cout << "输入点的x坐标" << endl;
+    cout << endl;
+    cout << "点的x坐标" << endl;
     cin >> P.x;
-    cout << "输入点的y坐标" << endl;
+    cout << "点的y坐标" << endl;
     cin >> P.y;
-    cout << "输入点的ID" << endl;
+    cout << "点的ID" << endl;
     cin >> P.ID;
 }
 
 void OutPoint(Point P)
 {
+    cout << endl;
     cout << "点坐标为(" << P.x << "," << P.y << ")" << endl;
     cout << "ID:" << P.ID << endl;
 }
